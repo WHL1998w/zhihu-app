@@ -25,17 +25,29 @@
 		},
 		created() {}
 	}
+	
 </script>
 
 <style lang="scss" scoped>
+	body{
+		margin: 0;
+	}
 	ul {
-		margin-top: 1000px;
-	    list-style-type: none;
-	    margin: 0;
-	    padding: 0;
-	    overflow: hidden;
-	    background-color: #ffffff;
-		height: 100px;
+		// margin-top: 1000px;
+	 //    list-style-type: none;
+	 //    margin: 0;
+	 //    padding: 0;
+	 //    overflow: hidden;
+	 //    background-color: #ffffff;
+		// height: 100px;
+		list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color: #ffffff;
+		    position: fixed;
+		    top: 0;
+		    width: 100%;
 	}
 	li {
 		font-size: larger;
@@ -55,6 +67,11 @@
 	.router-link-active{
 		color: black;
 		border-bottom: 2px solid #000000;
+	}
+	.nav-bar{
+		 position: sticky;
+		   position: -webkit-sticky;    // 兼容 -webkit 内核的浏览器
+		   top: 10px;                          // 必须设一个值，否则不生效
 	}
 // 	.gutter{
 // 		position: relative;
