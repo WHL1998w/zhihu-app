@@ -9,7 +9,7 @@
 					<router-link to="/home">首页</router-link>
 				</li>
 				<li class="nav-bar bl-text-color-gray">
-					<router-link to="/special/all">发现</router-link>
+					<router-link to="/explore">发现</router-link>
 				</li>
 				<li class="nav-bar bl-text-color-gray">
 					<router-link to="/question/waiting">等你来答</router-link>
@@ -17,7 +17,7 @@
 				<div class="nav-bar">
 					<input class="search" />
 					<img src="../assets/image/search.png" class="search1" />
-					<button class="sunmit bl-btn bl-btn-round bl-btn-blue">提交</button>
+					<button class="sunmit bl-btn bl-btn-round bl-btn-blue">提问</button>
 				</div>
 				<li class="nav-bar">
 					<img class="infor" src="../assets/image/lingdang_2f.png" />
@@ -86,7 +86,7 @@
 		border: 0.5px solid darkgrey;
 		width: 410px;
 		height: 40px;
-		border-radius: 1%;
+		border-radius: 3%;
 		background-color: rgb(246, 246, 246);
 	}
 	.sunmit{
