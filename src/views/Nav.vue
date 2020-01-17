@@ -1,19 +1,37 @@
 <template>
 	<div>
-		<div class="nav gutter">
-			<div class="nav-bar">
-				<ul>
-					<li>
-						<img src="../assets/image/zhihu.png" />
-					</li>
-				  <li><router-link to="/home">首页</router-link></li>
-				  <li><router-link to="/special/all">发现</router-link></li>
-				  <li><router-link to="/question/waiting">等你来答</router-link></li>
-				  <li><router-link to="/login">登录</router-link></li>
-			</ul>
-
-			</div>
-		</div>
+		<ul class="nav bl-shadow">
+			<div class="nav-box">
+				<a href="https://www.zhihu.com/">
+					<img src="../assets/image/zhihu.png" />
+				</a>
+				<li class="nav-bar bl-text-color-gray">
+					<router-link to="/home">首页</router-link>
+				</li>
+				<li class="nav-bar bl-text-color-gray">
+					<router-link to="/special/all">发现</router-link>
+				</li>
+				<li class="nav-bar bl-text-color-gray">
+					<router-link to="/question/waiting">等你来答</router-link>
+				</li>
+				<div class="nav-bar">
+					<input class="search" />
+					<img src="../assets/image/search.png" class="search1" />
+					<button class="sunmit bl-btn bl-btn-round bl-btn-blue">提交</button>
+				</div>
+				<li class="nav-bar">
+					<img class="infor" src="../assets/image/lingdang_2f.png" />
+				</li>
+				<li class="nav-bar">
+					<img src="../assets/image/ic_talk.png" class="talk"/>
+				</li>
+				<li class="nav-bar">
+					<router-link to="/login">
+						<img src="../assets/image/11.jpg" class="bl-user-avatar bl-circle-avatar login"/>
+					</router-link>
+				</li>
+			</div>	
+		</ul>
 		<!-- 二级路由入口 -->
 		<router-view />
 	</div>
@@ -27,46 +45,61 @@
 		},
 		created() {}
 	}
-	
 </script>
 
 <style lang="scss" scoped>
-	body{
-		margin: 0;
+	.nav {
+		width: 100%;
+		height: 60px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color: rgb(255,255,255);
+		z-index: 999;
 	}
-	ul {
-	
-		list-style-type: none;
-		    margin: 0;
-		    padding: 0;
-		    overflow: hidden;
-		    background-color: #ffffff;
-		    position: fixed;
-		    top: 0;
-		    width: 100%;
+	.nav-box{
+		width: 70%;
+		margin: 0 auto;
+		height: 50px;		
+}
+	.nav-bar {
+		position: relative;
+		top: -30px;
+		margin-left: 30px;
+		display: inline-block;
 	}
-	li {
-		font-size: larger;
-		margin-top: 10px;
-		margin-left: 100px;
-	    float: left;
-	}
-	
-	li a {
-	    display: block;
-	    color: black;
-	    text-align: center;
-	    padding: 14px 16px;
-	    text-decoration: none;
-	}
-
-	.router-link-active{
+	.router-link-active {
+		font-weight: bold;
 		color: black;
 		border-bottom: 2px solid #000000;
 	}
-	.nav-bar{
-		 position: sticky;
-		   position: -webkit-sticky;    // 兼容 -webkit 内核的浏览器
-		   top: 10px;                          // 必须设一个值，否则不生效
+	.search1{
+		position: relative;
+		left: -30px;
+		top: 5px;
+	}
+	.infor{
+		position: relative;
+		margin-left: 30px;
+	}
+	.search{
+		border: 0.5px solid darkgrey;
+		width: 410px;
+		height: 40px;
+		border-radius: 1%;
+		background-color: rgb(246, 246, 246);
+	}
+	.sunmit{
+		margin-left: 15px;
+		height: 40px;
+		width: 70px;
+	}
+	.login{
+		position: relative;
+		top: 20px;
+	}
+	.talk{
+		position: relative;
+		top: 10px;
 	}
 </style>
