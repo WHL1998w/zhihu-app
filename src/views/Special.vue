@@ -1,18 +1,18 @@
 <template>
 	<div>
-		<div class="banner">
+		<div class="banner bl-shadow">
 			<img src="../assets/image/heart.png" />
 			<h3>全部专题</h3>
 			<h4>共有{{specials.length}}个文章</h4>
 		</div>
 		<div class="bl-container bl-shadow">
-			<div class="bl-row" v-for="(item,index) in specials" :key="index">
+			<div class="bl-row container bl-shadow" v-for="(item,index) in specials" :key="index">
 				<div class="bl-col-4 "><img :src="item.banner" class="img-circle"></div>
 				<div class="bl-col-8">
-					<h3>{{ item.title}}</h3>
-					<p class="bl-meta">{{ item.updated}} 更新，{{ item.viewCount }}次浏览</p>
+					<h3 class="bl-font-weight bl-text-color-black">{{ item.title}}</h3>
+					<p class="bl-meta bl-text-color-gray">{{ item.updated}} 更新，{{ item.viewCount }}次浏览</p>
 					<p class="bl-sub-title">{{ item.introduction }}</p>
-					<span v-for="(section,index) in item.sections" :key="index" class="bl-meta">
+					<span v-for="(section,index) in item.sections" :key="index" class="bl-meta section">
 						{{ section.sectionTitle }}
 					</span>
 				</div>
@@ -73,24 +73,16 @@
 </script>
 
 <style lang="scss" scoped>
-	h3 {
-		color: #1a1a1a;
-		font-size: 30px;
-	}
-	h4 {
-		color: #a8b2b4;
-		font-size: 20px;
-	}
 	.banner {
-		width: 90%;
+		width: 100%;
 		margin-bottom: 10px;
-		margin-top: 80px;
+		margin-top: 60px;
 		height: 100px;
 		border: 1px solid #d6d6d6;
-		box-shadow: 2px 5px 5px #ddd;
 		padding-left: 10%;
 		display: flex;
 		align-items: center;
+		background-color: white;
 		img {
 			height: 60%;
 		}
@@ -100,5 +92,17 @@
 	    width: 90%;
 	    height: 90%;
 		border-radius: 10px;
+	}
+	.container{
+		padding: 10px 10px 10px 10px;
+		width: 100%;
+		background-color: white;
+		margin-bottom: 10px;
+		border: 1px solid gainsboro;
+		border-radius: 5px;
+	}
+	.section{
+		border: 1px solid gainsboro;
+		background-color: gainsboro;
 	}
 </style>

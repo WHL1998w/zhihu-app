@@ -9,6 +9,7 @@ import Follow from '../views/Follow.vue'
 import Hot from '../views/Hot.vue'
 import QuestionWaiting from '../views/QuestionWaiting.vue'
 import Login from '../views/Login.vue'
+import RoundTable from '../views/RoundTable.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -48,6 +49,10 @@ const routes = [
  		path: 'explore',
  		component: () => import('../views/Explore.vue')
  	},
+	{
+		path: 'round/table/all',
+		component: () => import('../views/RoundTable.vue')
+	},
  	{
  		path: 'special/all',
  		component: () => import('../views/Special.vue')
