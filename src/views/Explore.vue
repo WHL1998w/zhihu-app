@@ -127,6 +127,36 @@
 		<button class="favorite-btn bl-btn bl-font-weight">
 			<router-link to="/favorite/all">查看更多热门收藏</router-link>
 		</button>
+		<!--专栏-->
+		<div class="bl-row">
+			<svg class="star special-logo" viewBox="0 0 24 24" width="36" height="36">
+				<path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm4.043-15.524a.745.745 0 0 0-1.053.017l-6.857 7.071 2.237 2.17 6.857-7.071a.743.743 0 0 0-.016-1.052l-1.168-1.135zm-9.028 9.476l-.348 1.381 1.37-.39 1.274-.36-1.973-1.916-.323 1.285z"
+				 fill-rule="evenodd"></path>
+			</svg>
+			<h1 class="title bl-text-color-black">专栏</h1>
+		</div>
+		<div class="columns">
+			<div class="column-card bl-shadow" v-for="(item,index) in columns" :key="index">
+				<div class="column-top">
+					<img :src="item.imageUrl" alt="" class="column-img" />
+				</div>
+				<div class="column-middle">
+					<h4 class="bl-font-weight bl-text-color-black">{{ item.title}}</h4>
+					<span class="colum-font1">{{item.followers}}关注·{{item.aritclesCount}}文章</span>
+					<div class="font-space">
+						<h5 class="colunm-font2">{{item.description.substring(0,30)}}</h5>
+					</div>
+				</div>
+				<div class="column-bottom">
+					<div class="header-col-column">
+						<a v-bind:href="item.url" class="button-cloum" style="display: block;">进入专栏</a>
+					</div>
+				</div>
+			</div>
+			<button class="special-watch-btn bl-btn bl-font-weight">
+				<router-link to="/clumns">查看更多专栏</router-link>
+			</button>
+		</div>
 	</div>
 	</div>
 </template>
@@ -139,7 +169,8 @@
 			return {
 				specials: [],
 				roundTables: [],
-				favorites: []
+				favorites: [],
+				columns: []
 			};
 		},
 		created() {
@@ -161,6 +192,10 @@
 			this.axios.get('http://localhost:8080/api/favorite').then(res => {
 				console.log(res);
 				this.favorites = res.data.data;
+			});
+			this.axios.get('http://localhost:8080/api/columns').then(res => {
+				console.log(res);
+				this.columns = res.data.data;
 			});
 		}
 	};
@@ -216,13 +251,30 @@
 		grid-template-rows: 450px 450px;
 	}
 
+	.columns {
+		position: relative;
+		top: 20px;
+		/*网格布局*/
+		width: 80%;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 250px 250px 250px 250px;
+		grid-template-rows: 320px 320px;
+	}
+
 	.special-card {
 		margin-right: 15px;
 		margin-bottom: 20px;
 		background-color: white;
-		border-radius:3%
+		border-radius: 3%
 	}
-
+	.column-card{
+		margin-right: 15px;
+		margin-bottom: 20px;
+		align-items: center;
+		background-color: white;
+		border-radius: 3%
+	}
 	.special-card-body {
 		padding: 15px 15px 15px 15px;
 		position: relative;
@@ -273,7 +325,8 @@
 		top: 10px;
 		left: 430px;
 	}
-	.favorite-btn{
+
+	.favorite-btn {
 		width: 15%;
 		height: 50px;
 		color: gainsboro;
@@ -282,8 +335,9 @@
 		background-color: skyblue;
 		position: relative;
 		top: 10px;
-		left:42%;
+		left: 42%;
 	}
+
 
 	.round-table-title {
 		position: relative;
@@ -318,41 +372,51 @@
 		margin: 0px 10px 20px 20px;
 		width: 92%;
 	}
+
 	.card-header-row {
 		margin: 15px;
 		display: flex;
 		width: 100%;
 		height: 48%;
 	}
+
 	.header-col-1 {
 		flex: 0 0 60%;
 	}
+
 	.header-col-3 {
 		flex: 0 0 100%;
+
 		ul {
 			margin-top: -20px;
 			width: 100%;
 			display: flex;
+
 			img {
 				margin-left: -20px;
 				width: 2.5rem;
 				height: 2.5rem;
 			}
+
 			li {
 				list-style-type: none;
 				margin-left: 15px;
 				margin-top: -7px;
 			}
+
 			li:last-child {
 				margin-left: 30px;
 			}
+
 			.header-text {
 				color: #999;
 			}
 		}
 	}
+
 	.header-col-2 {
 		flex: 0 0 37%;
+
 		input[type='button'] {
 			width: 102px;
 			height: 34px;
@@ -367,15 +431,18 @@
 			margin-top: 20px;
 		}
 	}
+	
 	.card-body {
 		width: 92%;
 		height: 210px;
 		margin: 20px 20px 20px 20px;
 	}
+
 	.card-body-row {
 		display: flex;
 		width: 100%;
 	}
+
 	.card-col-1 {
 		flex: 0 0 100%;
 		display: block;
@@ -387,6 +454,21 @@
 		font-weight: 600;
 		font-synthesis: style;
 	}
+	.button-cloum {
+		font-weight: bold;
+		display: block;
+		margin-top: 25px;
+		width: 102px;
+		height: 30px;
+		border-radius: 3px;
+		font-size: 15px;
+		text-align: center;
+		margin-left: 70px;
+		background-color: rgb(235, 245, 255);
+		color: rgb(0, 163, 255);
+		border:none;
+	}
+
 	.card-col-2 {
 		margin-top: 15px;
 		height: 21px;
@@ -396,6 +478,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+
 	.card-col-4 {
 		height: 24px;
 		font-size: 18px;
@@ -404,12 +487,14 @@
 		margin-top: 22px;
 		margin-left: 5px;
 		font-synthesis: style;
+
 		i {
 			color: #8590a6;
 			font-size: 22px;
 			margin: 5px 20px;
 		}
 	}
+
 	.card-col-3 {
 		.body-ul {
 			height: 17px;
@@ -421,13 +506,49 @@
 			margin-left: 20px;
 			color: gainsboro;
 			list-style-type: none;
+
 			li:first-child {
 				margin-left: -15px;
 			}
+
 			li {
 				margin-left: 20px;
 				color: gainsboro;
 			}
 		}
+	}
+
+	.header-col-column {
+		flex: 0 0 37%;
+	}
+
+	.colunm-font2 {
+		text-align: center;
+		margin-top: 25px;
+	}
+
+	.colum-font1 {
+		color: rgb(153, 153, 153);
+		font-size: 13px;
+		position: relative;
+		top: 10px;
+	}
+
+	.column-img {
+		height: 70px;
+		width: 70px;
+		border-radius: 50%;
+		margin-top: 0.9375rem;
+		margin-left: 85px;
+	}
+
+	.column-font {
+		font-weight: bold;
+		font-size: 20px;
+		margin-left: 85px;
+		margin-top: 20px;
+	}
+	.column-middle{
+		text-align: center;
 	}
 </style>

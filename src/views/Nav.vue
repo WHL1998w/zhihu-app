@@ -71,8 +71,9 @@
 	.router-link-active {
 		font-weight: bold;
 		color: black;
-		border-bottom: 2px solid #000000;
-	}
+		border-bottom: 3px solid rgb(0, 132, 255);
+		padding-bottom: 20px;
+}
 	.search1{
 		position: relative;
 		left: -30px;
