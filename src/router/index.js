@@ -12,13 +12,14 @@ import Login from '../views/Login.vue'
 import RoundTable from '../views/RoundTable.vue'
 import Favorite from '../views/Favorite.vue'
 import Columns from '../views/Columns.vue'
+import Banner from '../views/Banner.vue'
 Vue.use(VueRouter)
 
 const routes = [
  // 这两个为顶层路由,都拥有整个浏览器大小的布局自由度
  {
    path: '/',
-   component: Nav,
+   component: Banner,
  	children:[{
  		path: '/',
  		redirect: 'home'

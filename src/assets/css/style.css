@@ -4,21 +4,24 @@
 /* 全局设定 */
 * {
 	margin: 0;
-		padding: 0;
-		border: none;
-		outline: none;
-		box-sizing: border-box;
+	padding: 0;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
 }
+
 body {
 	min-width: 1024px;
 	height: calc(100vh);
 	font-size: 15px;
 	color: #1a1a1a;
 }
+
 /* 超链接设置 */
 a {
 	text-decoration: none;
 }
+
 /* ul去除. */
 ul {
 	list-style: none;
@@ -133,14 +136,16 @@ ul {
 /* 居中留白容器 */
 .bl-container {
 	width: 80%;
-		margin-left: auto;
-		margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
+
 /* 填充效果 */
 .bl-fill {
 	width: 100%;
 	height: 100%;
 }
+
 /* 常用的高度设置 */
 .full-height {
 	height: 100%;
@@ -157,6 +162,15 @@ ul {
 .min-height {
 	height: 30%;
 }
+.min-height-1{
+	height: 20%;
+	border: 2px solid green;
+	
+}
+.min-height-2{
+	height: 10%;
+	border: 2px solid red;
+}
 
 /* 栅格布局 */
 .bl-row {
@@ -172,6 +186,7 @@ ul {
 .bl-col-12 {
 	flex: 1 1 100%;
 }
+
 .bl-col-9 {
 	flex: 0 0 75%;
 }
@@ -187,14 +202,17 @@ ul {
 .bl-col-8 {
 	flex: 1 1 66.6%;
 }
-.bl-col-7{
+
+.bl-col-7 {
 	flex: 0 0 58.333333%;
 }
+
 .bl-col-6 {
 	flex: 1 1 50%;
 
 }
-.bl-col-5{
+
+.bl-col-5 {
 	flex: 0 0 41.666667%;
 }
 
@@ -204,13 +222,14 @@ ul {
 
 .bl-col-3 {
 	flex: 1 1 25%;
-	
+
 }
 
 .bl-col-2 {
 	flex: 1 1 16.6%;
 }
-.bl-col-1{
+
+.bl-col-1 {
 	flex: 0 0 8.333333%;
 }
 
@@ -262,6 +281,7 @@ ul {
 .bl-fruid-col-12 {
 	flex: 1 1 100%;
 }
+
 /* -------------------------offset设置---------------------- */
 .offset-l-1 {
 	margin-left: 8.333333%;
@@ -647,7 +667,8 @@ ul {
 .d-block {
 	display: block;
 }
-/* --------------------------水平方向对齐方式------------------------------ */
+
+/* --------------------------行内水平方向对齐方式------------------------------ */
 .tx-center {
 	text-align: center;
 }
@@ -818,6 +839,7 @@ ul {
 .order-12 {
 	order: 12;
 }
+
 /*------------------------------头像--------------------------*/
 /*圆形头像*/
 .bl-circle-avatar {
@@ -842,6 +864,7 @@ ul {
 	width: 50px;
 	height: 50px;
 }
+
 /*--------------------------------字体--------------------*/
 /* 字体样式 */
 h1,
@@ -863,22 +886,27 @@ h6 {
 .bl-text-color-white {
 	color: #FFFFFF;
 }
+
 /*蓝色*/
-.bl-text-color-bule{
+.bl-text-color-bule {
 	color: dodgerblue;
 }
+
 /*粉色*/
-.bl-text-color-pick{
+.bl-text-color-pick {
 	color: #FF6EC4;
 }
+
 /*黑色*/
-.bl-text-color-black{
-	color: rgb(26,26,26);
+.bl-text-color-black {
+	color: rgb(26, 26, 26);
 }
+
 /**加粗*/
-.bl-font-weight{
+.bl-font-weight {
 	font-weight: bold;
 }
+
 /* 标题字体 */
 .bl-title {
 	font-size: 20px;
@@ -898,6 +926,7 @@ h6 {
 	color: #333;
 	margin-bottom: 10px;
 }
+
 /*标题样式*/
 .title-front {
 	font-size: 50px;
@@ -943,16 +972,19 @@ h6 {
 	color: #fff;
 	background-color: #ffb800;
 }
+
 /*蓝色主题*/
 .bl-btn-blue {
 	color: #fff;
 	background-color: #00BBDD;
 }
-.bl-btn-pick{
+
+.bl-btn-pick {
 	color: #fff;
 	background-color: #ff6ec4;
 }
-.bl-btn-gree{
+
+.bl-btn-gree {
 	color: #fff;
 	background-color: rgb(26, 250, 41);
 }
@@ -972,7 +1004,8 @@ h6 {
 	height: 30px;
 	width: 60px;
 }
-.bl-btn-minl{
+
+.bl-btn-minl {
 	height: 25px;
 	width: 40px;
 }
@@ -1016,10 +1049,8 @@ hr {
 .bl-shadow {
 	box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
 }
-.bl-img{
+
+.bl-img {
 	width: 90%;
 	height: 90%;
 }
-
-
-
