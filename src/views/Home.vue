@@ -1,19 +1,22 @@
 <template>
-	<div class="bl-container full-height">
-		<div class="d-flex justify-content-between mt-2">
-			<div class="bl-col-8 tiny-round mr-2 bl-shadow">
-				<div><img src="https://static.zhihu.com/heifetz/assets/NewYear2020Banner.e5ccc19d.png" class="fill tiny-round mb-1" /></div>
-				<div class="fill-white mb-2">
+	<div class="container full-height">
+		<div class="d-flex mt-2 justify-content-around">
+			<div class="bl-col-8 tiny-round shadow">
+				<div class="img-wrapper">
+					<img src="https://static.zhihu.com/heifetz/assets/NewYear2020Banner.e5ccc19d.png" class="tiny-round mb-1" width="810px" height="95px" />
+				</div>
+				<div class="fill-white border-bottom">
 					<ul class="sub-bar d-flex align-items-center justify-content-around">
 						<li><router-link to="/home/recommoned">推荐</router-link></li>
 						<li><router-link to="/home/follow">关注</router-link></li>
 						<li><router-link to="/home/hot">热榜</router-link></li>
 					</ul>
 				</div>
-				<router-view :key="$route.fullPath" />
+				<!-- 能记住滚动条的位置，保证良好的体验 -->
+				<keep-alive><router-view /></keep-alive>
 			</div>
-			<div class="bl-col-3">
-				<div class="card fill-white tiny-round mb-2 bl-shadow p-4 d-flex flex-column justify-content-around">
+			<div class="bl-col-4 ml-2">
+				<div class="bl-card fill-white tiny-round mb-2 bl-shadow p-3 d-flex flex-column justify-content-around">
 					<ul class="d-flex">
 						<li class="bl-fruid-col-4 tx-center link">
 							<svg class="grey-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -68,8 +71,8 @@
 						</li>
 					</ul>
 				</div>
-				<div class="card fill-white tiny-round mb-2 bl-shadow p-3">
-					<div class="d-flex justify-content-between border-bottom pb-3">
+				<div class="fill-white tiny-round mb-2 bl-shadow p-3">
+					<div class="d-flex justify-content-between pb-3">
 						<div class="d-flex align-items-center">
 							<svg class="grey-icon" viewBox="0 0 24 24" width="24" height="24">
 								<path
@@ -79,7 +82,7 @@
 							</svg>
 							<p class="meta ml-2 normal-font">
 								创作者中心
-								<span class="blue ml-2 normal-font">LV1</span>
+								<span class="blue ml-4 normal-font">去开通</span>
 							</p>
 						</div>
 
@@ -90,29 +93,9 @@
 							></path>
 						</svg>
 					</div>
-					<div class="bl-row p-3 border-bottom">
-						<div class="bl-col-6 tx-center">
-							<p class="meta">昨日被阅读数</p>
-							<h3>0</h3>
-							<p class="meta">较前日--</p>
-						</div>
-						<div class="bl-col-6 tx-center">
-							<p class="meta">昨日获赞同数</p>
-							<h3>0</h3>
-							<p class="meta">较前日--</p>
-						</div>
-					</div>
-					<div class="d-flex pt-3">
-						<p class="meta">瓦力保镖为你的创作提供持续保护</p>
-						<svg width="17" height="17" viewBox="0 0 16 16" class="grey-icon" fill="currentColor">
-							<path
-								d="M8 3l.737.339.428.187.377.158.326.127c.15.055.282.1.395.133.55.161 1.297.157 2.237-.014l-.002 3.784c0 3.07-2.52 4.76-4.498 5.286-1.977-.527-4.498-2.216-4.498-5.286L3.5 3.93c.94.17 1.686.175 2.237.014C6.187 3.812 6.941 3.497 8 3zm2.38 3.066L7.599 8.834 6.32 7.566a.4.4 0 0 0-.554.554l1.55 1.55a.5.5 0 0 0 .568 0l3.05-3.05a.4.4 0 0 0-.554-.554z"
-							></path>
-						</svg>
-					</div>
 				</div>
 
-				<div class="card fill-white tiny-round mb-2 bl-shadow p-3 d-flex flex-column justify-content-around">
+				<div class="bl-card fill-white tiny-round mb-2 bl-shadow p-3 d-flex flex-column justify-content-around">
 					<ul class="d-flex">
 						<li class="bl-fruid-col-4 tx-center link">
 							<svg class="live-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -168,7 +151,7 @@
 					</ul>
 				</div>
 
-				<div class="card fill-white tiny-round mb-2 bl-shadow p-3">
+				<div class="bl-card fill-white tiny-round mb-2 bl-shadow p-3">
 					<div class="d-flex p-2 justify-content-between">
 						<div class="d-flex  align-items-end">
 							<svg class="grey-icon" viewBox="0 0 24 24" width="18" height="18">
@@ -246,7 +229,7 @@
 					</div>
 				</div>
 
-				<div class="card">
+				<div class="bl-card">
 					<div class="d-flex p-2 justify-content-around footer-item">
 						<li>刘看山</li>
 						<li>知乎指南</li>
@@ -276,6 +259,13 @@
 				</div>
 			</div>
 		</div>
+		<button class="goto-top" @click="backToTop" v-show="btnFlag">
+			<svg class="grey-icon" title="回到顶部" viewBox="0 0 24 24" width="24" height="24">
+				<path
+					d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"
+				></path>
+			</svg>
+		</button>
 	</div>
 </template>
 
@@ -283,41 +273,58 @@
 export default {
 	name: 'home',
 	data() {
-		return {};
+		return {
+			btnFlag: false
+		};
 	},
 	created() {},
-	mounted() {},
-	methods: {}
+	mounted() {
+		// window对象，所有浏览器都支持window对象。它表示浏览器窗口，监听滚动事件
+		window.addEventListener('scroll', this.scrollToTop);
+	},
+	methods: {
+		backToTop() {
+			//加定时器，平滑过渡回到顶部
+			let timer = setInterval(() => {
+				let ispeed = Math.floor(-this.scrollTop / 5);
+				document.documentElement.scrollTop = document.body.scrollTop = this.scrollTop + ispeed;
+				if (this.scrollTop === 0) {
+					clearInterval(timer);
+				}
+			}, 16);
+		},
+		// 计算距离顶部的高度，当高度大于200显示回顶部图标，小于200则隐藏
+		scrollToTop() {
+			let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+			this.scrollTop = scrollTop;
+			if (this.scrollTop > 200) {
+				this.btnFlag = true;
+			} else {
+				this.btnFlag = false;
+			}
+		}
+	}
 };
 </script>
 <style lang="scss" scoped>
-// 关注 推荐 热榜菜单初始样式
+.container{
+	width: 70%;
+	margin: 0 auto;
+}
+// 关注 推荐 热榜导航初始样式
 .sub-bar {
 	width: 25%;
 	height: 52px;
 }
-// 关注 推荐 热榜菜单滚动到顶部固定的样式
-.auto_fixed {
-	position: fixed;
-	top: 0px;
-	width: 200px;
-	height: 52px;
-	margin-left: 100px;
-	z-index: 1200;
-	.router-link-active {
-		color: #0084ff;
-		font-weight: 500;
-		font-size: 16px;
-	}
-}
-// 关注 推荐 热榜菜单超链接样式
+// 关注 推荐 热榜导航超链接样式
 a {
 	text-align: center;
 	color: #444;
 }
+//激活样式
 .router-link-active {
-	font-weight: 600;
-	color: #439ccc;
+	font-weight: 500;
+	color: #0084ff;
 }
 // 右边第一张卡片的item文字悬停色
 .item:hover {
@@ -342,6 +349,7 @@ a {
 .wiki-icon {
 	fill: #576cd3;
 }
+// 数字样式
 .number-icon {
 	font-size: 12px;
 	padding: 4px 10px;
@@ -355,5 +363,16 @@ a {
 	li {
 		display: inline;
 	}
+}
+.goto-top {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	width: 40px;
+	height: 40px;
+	background: #fff;
+	border: 1px solid #eee;
+	border-radius: 3px;
+	cursor: pointer;
 }
 </style>

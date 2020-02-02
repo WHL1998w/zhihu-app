@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 //推荐数据
-var recommendList = require('./src/data/recommoned.json')
+var recommendList = require('./src/data/recommend.json')
 //关注数据
 var followList = require('./src/data/follow.json')
 //各类热榜数据

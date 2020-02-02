@@ -11,7 +11,7 @@
 					<div v-if="!item.children[0].thumbnail" class="d-flex p-3">
 						<h3 class="light-grey" :class="{ top: index1 < 3 }">{{ index1 + 1 }}</h3>
 						<div class="ml-3">
-							<a :href="'https://www.zhihu.com/question/' + item.target.id" target="_blank" class="sub-title">{{ item.target.title }}</a>
+							<a :href="'https://www.zhihu.com/question/' + item.target.id" target="_blank" class="bl-sub-title bl-font-weight">{{ item.target.title }}</a>
 							<p class="mt-2 ellipsis">{{ item.target.excerpt }}</p>
 							<ul class="d-flex mt-3">
 								<li class="mr-3 light-grey">
@@ -38,7 +38,7 @@
 					<div v-else class="d-flex p-3">
 						<h3 class="light-grey" :class="{ top: index1 < 3 }">{{ index1 + 1 }}</h3>
 						<div class="col-8 ml-3 mr-3">
-							<a :href="'https://www.zhihu.com/question/' + item.target.id" target="_blank" class="sub-title">{{ item.target.title }}</a>
+							<a :href="'https://www.zhihu.com/question/' + item.target.id" target="_blank" class="bl-sub-title bl-font-weight">{{ item.target.title }}</a>
 							<p class="mt-2 ellipsis">{{ item.target.excerpt }}</p>
 							<ul class="d-flex mt-3">
 								<li class="mr-3 light-grey">
@@ -139,4 +139,8 @@ export default {
 	vertical-align: middle;
 	background-color: #d3d3d3;
 }
+a {
+		position: relative;
+		color: rgb(26, 26, 26);
+	}
 </style>

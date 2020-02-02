@@ -10,7 +10,7 @@ export default new Vuex.Store({
 			id: 1,
 			url: 'tao-ran-ran-42',
 			nickname: '陶然然',
-			avatar: 'https://niit-soft.oss-cn-hangzhou.aliyuncs.com/avatar/me.jpg'
+			avatar: 'https://student-manage-whl.oss-cn-beijing.aliyuncs.com/logo/9.jpg'
 		}
 	},
 	mutations: {

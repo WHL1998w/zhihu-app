@@ -188,7 +188,11 @@ export default {
 }
 a {
 	position: relative;
+	color: #8590a6;
 }
+a:hover {
+		color: #1a1a1a;
+	}
 .router-link-active {
 	color: #444;
 	font-weight: 600;

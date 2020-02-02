@@ -57,7 +57,7 @@
 			</div>
 			<router-link to="round/table/all" class="all">查看更多圆桌</router-link>
 		</div>
-		
+
 		<div class="d-flex p-3 align-items-center">
 			<svg class="blue-icon mr-3" viewBox="0 0 24 24" width="36" height="36">
 				<path d="M5.515 19.64l.918-5.355-3.89-3.792c-.926-.902-.639-1.784.64-1.97L8.56 7.74l2.404-4.871c.572-1.16 1.5-1.16 2.072 0L15.44 7.74l5.377.782c1.28.186 1.566 1.068.64 1.97l-3.89 3.793.918 5.354c.219 1.274-.532 1.82-1.676 1.218L12 18.33l-4.808 2.528c-1.145.602-1.896.056-1.677-1.218z"
@@ -76,7 +76,7 @@
 						<ul class="bl-row">
 							<li><img :src="item.creatorAvatar" alt="" /></li>
 							<li>{{ item.creatorName }}</li>
-							<li >创建</li>
+							<li>创建</li>
 							<li>{{ item.followers }}人关注</li>
 						</ul>
 					</div>
@@ -97,7 +97,7 @@
 						</ul>
 					</div>
 					<div class="min-height-1 bl-row">
-						<p >已经收藏{{ item.totalCount }}条内容></p>
+						<p>已经收藏{{ item.totalCount }}条内容></p>
 					</div>
 				</div>
 			</div>
@@ -163,6 +163,56 @@
 			}).then(res => {
 				this.roundTables = res.data.data;
 				console.log(res.data.data);
+
+				this.$nextTick(() => {
+					//获得循环中的引用对象，都将会是数组的形式
+					let boxArr = this.$refs.box;
+					let imgArry = this.$refs.bgImg;
+					let btnArr = this.$refs.btn;
+					let mask1Arr = this.$refs.mask1;
+					let mask2Arr = this.$refs.mask2;
+					//遍历，对每个对象进行处理
+					for (var i = 0, len = boxArr.length; i < len; i++) {
+						let box = boxArr[i];
+						let img = imgArry[i];
+						let btn = btnArr[i];
+						let mask1 = mask1Arr[i];
+						let mask2 = mask2Arr[i];
+						//第三方库，可以获取图片的主色、次色等
+						RGBaster.colors(img, {
+							success: function(payload) {
+								// payload.dominant是主色，payload.secondary是次色, payload.palette是调色板，含多个主要颜色数组,RGB形式表示
+								this.dominant = payload.dominant;
+								this.secondary = payload.secondary;
+								// console.log('主色：' + payload.dominant);
+								//去掉rgb的外层rgb字母和括号，得到112,34,56这样的值
+								let str = payload.dominant.substring(4, payload.dominant.length - 1);
+								//按逗号分割，得到字符串数组
+								let strArr = str.split(',');
+								//分别获得r,g,b的值，并转为整型
+								let r = parseInt(strArr[0]);
+								let g = parseInt(strArr[1]);
+								let b = parseInt(strArr[2]);
+								// console.log(r + '=>' + g + '=>' + b);
+								//定义两个透明度的值
+								let a1 = 0;
+								let a2 = 0.5;
+								//创建两个rgba颜色，用来生成遮罩层的渐变色
+								let color1 = `rgba(${r},${g},${b},${a1})`;
+								let color2 = `rgba(${r},${g},${b},${a2})`;
+								// console.log('颜色1：' + color1);
+								// console.log('颜色2：' + color2);
+								//圆桌卡片顶部整宽部分背景色设置为图片主色
+								box.style.backgroundColor = this.dominant;
+								//右侧logo图覆盖两层蒙版，使用以下渐变色规则
+								mask1.style.background = 'linear-gradient(to right,' + this.dominant + ' 0%,' + color1 + ' 100%)';
+								mask2.style.background = 'linear-gradient(to right,' + color2 + ' 0%,' + color1 + ' 100%)';
+								//关注按钮的文字颜色，使用图片主色
+								btn.style.color = this.dominant;
+							}
+						});
+					}
+				});
 			});
 			this.axios.get('http://localhost:8080/api/favorite').then(res => {
 				console.log(res);
@@ -247,10 +297,9 @@
 			.mask {
 				position: absolute;
 				top: 0;
-				left: 0;
-				width: 100%;
+				right: 0;
+				width: 240px;
 				height: 240px;
-				border-top-left-radius: 5px;
 				border-top-right-radius: 5px;
 			}
 
@@ -287,7 +336,8 @@
 		border-radius: 5px;
 		box-shadow: 0 1px 3px 0 rgba(26, 26, 26, 0.1);
 		background-color: #fff;
-		.button{
+
+		.button {
 			width: 130px;
 			height: 40px;
 		}
