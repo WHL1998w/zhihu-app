@@ -9,7 +9,7 @@ export default new Vuex.Store({
 		user: {
 			id: 1,
 			url: 'tao-ran-ran-42',
-			nickname: '陶然然',
+			nickname: '王欢乐',
 			avatar: 'https://student-manage-whl.oss-cn-beijing.aliyuncs.com/logo/9.jpg'
 		}
 	},

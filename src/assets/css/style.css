@@ -758,6 +758,9 @@ ul {
 .border-bottom {
 	border-bottom: 1px solid #f0f2f7;
 }
+.border-bule{
+	border: 1px solid rgb(0, 165, 255);
+}
 
 /* 边框圆矩效果 */
 .tiny-round {
@@ -801,6 +804,9 @@ ul {
 /* 前景色 */
 .blue {
 	color: #0c89ff;
+}
+.bule1{
+	color: rgb(0, 165, 255);
 }
 
 .light-grey {

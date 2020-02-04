@@ -43,7 +43,7 @@
 				<!-- 点击“阅读全文”显示 -->
 				<div v-if="flags[index]" class="p-2">
 					<div class="d-inline-flex">
-						<img :src="item.target.author.avatar_url" class="avatar mr-2" />
+						<img :src="item.target.author.avatar_url" class="avatar tiny-round mr-2" />
 						<h4 class="mr-2">{{ item.target.author.name }}</h4>
 						<span>{{ item.target.author.headline }}</span>
 					</div>
@@ -171,7 +171,6 @@ export default {
 .avatar {
 	width: 24px;
 	height: 24px;
-	border-radius: 50%;
 	background-color: #fff;
 }
 .sticky-bar {
